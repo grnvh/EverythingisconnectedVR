@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-enviropacks@latest/aframe-enviropacks.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
+
+
+  </head>
+  <body>
+    <a-scene>
+
+    <a-assets>
+        <a-asset-item id="optimerBoldFont" src="./assets/tipo.json"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="rig" movement-controls  look-controls position="2.192 1.6 2">
+        <a-entity id="camera" position="0 2 0" rotation ="0 0 0"   cursor="rayOrigin: mouse"></a-entity>
+      </a-entity>
+
+    <a-entity renderer="colorManagement: true; physicallyCorrectLights: true"  enviropack="preset: interior"></a-entity>
+
+      <a-box  enviropack-material="material: gold" shadow  position="-1 0.5 -3" rotation="0 45 0" ></a-box>
+      <a-sphere  navigate-on-click="url: http://google.com" enviropack-material="material: gold" shadow  position="0 1.25 -5" radius="1.25" ></a-sphere>
+      <a-cylinder  enviropack-material="material: gold" shadow  position="1 0.75 -3" radius="0.5" height="1.5" ></a-cylinder>
+
+
+      <a-entity text-geometry="value: habitar la web ; font: #optimerBoldFont ; size:2;  height: .5; bevelEnabled: true; bevelSize: 0.04; bevelThickness: 0.04; curveSegments: 1" enviropack-material="material: gold"  ></a-entity> -->
+
+
+    </a-scene>
+    <script>
+        AFRAME.registerComponent('navigate-on-click', {
+            schema: {
+                url: { default: ''}
+            },
+      
+            init: function () {
+                var data = this.data;
+                var el = this.el;
+      
+                el.addEventListener('click', function () {
+                    window.open(data.url,"_blank");
+                   
+                    
+                });
+            }
+        });        
+      </script>
+  </body>
+</html>
